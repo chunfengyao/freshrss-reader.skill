@@ -80,18 +80,18 @@ def report_news(hours=24):
     category = os.environ.get('SELF_HOSTED_FRESHRSS_CATEGORY')
 
     if not all([base_url, username, apikey, category]):
-        print("Error: Missing environment variables (SELF_HOSTED_FRESHRSS_BASE_URL, SELF_HOSTED_FRESHRSS_USERNAME, SELF_HOSTED_FRESHRSS_API_KEY, SELF_HOSTED_FRESHRSS_CATEGORY)")
-        return
+        print("Error: Missing environment variables (SELF_HOSTED_FRESHRSS_BASE_URL, SELF_HOSTED_FRESHRSS_USERNAME, SELF_HOSTED_FRESHRSS_API_KEY, SELF_HOSTED_FRESHRSS_CATEGORY)", file=sys.stderr)
+        sys.exit(-1)
 
     token = get_auth_token(base_url, username, apikey)
     if not token:
-        print("Error: Failed to obtain authentication token.")
-        return
+        print("Error: Failed to obtain authentication token.", file=sys.stderr)
+        sys.exit(-2)
 
     items = fetch_news(base_url, token, category)
     if not items:
-        print(f"No news found in category '{category}'.")
-        return
+        print(f"No news found in category '{category}'.", file=sys.stderr)
+        sys.exit(-3)
 
     now = datetime.now(timezone.utc)
     threshold = now - timedelta(hours=hours)

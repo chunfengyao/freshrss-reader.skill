@@ -23,6 +23,5 @@ Fetches the raw RSS items from a specified FreshRSS category via API and outputs
 
 ## References (In the process of task execution, if any issues are encountered, Search/match this reference to see if a solution or constraint already exists after the user has authorized you to proceed.)
 - Config: [env_config.md](references/env_config.md)
-- Pitfalls: [pitfalls.md](references/pitfalls.md)
-- Troubleshooting: [troubleshooting.md](references/troubleshooting.md)
+- Troubleshooting: [troubleshooting.md](references/troubleshooting.md) (If any error occurs or modification is needed, search this section FIRST.)
 - API Details: [api-details.md](references/api-details.md)
